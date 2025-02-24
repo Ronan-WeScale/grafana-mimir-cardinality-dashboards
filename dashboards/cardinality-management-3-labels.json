@@ -1,14 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS",
-      "label": "monit_prom_lts_cardinality_analysis",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "marcusolsson-json-datasource",
-      "pluginName": "JSON API"
-    }
-  ],
   "__elements": [],
   "__requires": [
     {
@@ -115,7 +105,7 @@
     {
       "datasource": {
         "type": "marcusolsson-json-datasource",
-        "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -168,7 +158,7 @@
           "cacheDurationSeconds": 0,
           "datasource": {
             "type": "marcusolsson-json-datasource",
-            "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+            "uid": "$datasource"
           },
           "fields": [
             {
@@ -212,7 +202,7 @@
     {
       "datasource": {
         "type": "marcusolsson-json-datasource",
-        "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -278,7 +268,7 @@
           "cacheDurationSeconds": 300,
           "datasource": {
             "type": "marcusolsson-json-datasource",
-            "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+            "uid": "$datasource"
           },
           "fields": [
             {
@@ -323,7 +313,7 @@
     {
       "datasource": {
         "type": "marcusolsson-json-datasource",
-        "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+        "uid": "$datasource"
       },
       "description": "For each value of label ${label}, shows you the number of time series that have that label value applied. Click to show drilldown link.",
       "fieldConfig": {
@@ -376,7 +366,7 @@
           "cacheDurationSeconds": 300,
           "datasource": {
             "type": "marcusolsson-json-datasource",
-            "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+            "uid": "$datasource"
           },
           "fields": [
             {
@@ -434,7 +424,7 @@
     {
       "datasource": {
         "type": "marcusolsson-json-datasource",
-        "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+        "uid": "$datasource"
       },
       "description": "Highest cardinality metrics with ${label} = ${labelValues}.",
       "fieldConfig": {
@@ -516,7 +506,7 @@
           "cacheDurationSeconds": 300,
           "datasource": {
             "type": "marcusolsson-json-datasource",
-            "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+            "uid": "$datasource"
           },
           "fields": [
             {
@@ -565,39 +555,10 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": false,
-          "text": "anonymous",
-          "value": "anonymous"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(cortex_distributor_requests_in_total,user)",
-        "description": "Tenants for mimir",
-        "hide": 0,
-        "includeAll": false,
-        "label": "Tenant",
-        "multi": false,
-        "name": "tenant",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(cortex_distributor_requests_in_total,user)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
         "current": {},
         "datasource": {
           "type": "marcusolsson-json-datasource",
-          "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+          "uid": "$datasource"
         },
         "definition": "$.cardinality[*].label_name",
         "hide": 0,
@@ -633,7 +594,7 @@
         "current": {},
         "datasource": {
           "type": "marcusolsson-json-datasource",
-          "uid": "${DS_MONIT_PROM_LTS_CARDINALITY_ANALYSIS}"
+          "uid": "$datasource"
         },
         "definition": "$.labels[*].cardinality[*].label_value",
         "hide": 2,
@@ -672,17 +633,16 @@
         "type": "query"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "description": "A label-value filter to be used for all cardinality queries",
-        "filters": [],
         "hide": 0,
-        "label": "Filter",
-        "name": "filter",
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "marcusolsson-json-datasource",
+        "refresh": 1,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "adhoc"
+        "type": "datasource"
       }
     ]
   },
